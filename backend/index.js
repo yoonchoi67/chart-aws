@@ -3,17 +3,18 @@ import express from 'express';
 import cors from 'cors';
 import routes from './routes/routes.js';
  
+const app = express();
+const PRODUCTION = process.env.NODE_ENV === 'production'
 
-if(process.env.NODE_ENV === 'production') {
-    console.log("prod")
+if( PRODUCTION ) {
+    app.use('/', express.static('/home/ubuntu/webapp/client/build'))
 } else {
-    console.log('dev')
+    app.use("/", routes);
 }
 
-const app = express();
+
 const port = process.env.PORT;
 app.use(cors());
-app.use("/", routes);
 
 app.listen(port, () => {
     console.log(`Server Running at ${port}`)
