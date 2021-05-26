@@ -1,7 +1,6 @@
 import { FETCH_ALL } from '../constants/actionTypes';
 
-
-export default (initialState =[], action) => {
+const posts = (initialState = [], action) => {
   switch (action.type) {
     case FETCH_ALL:
       return action.payload;
@@ -9,5 +8,13 @@ export default (initialState =[], action) => {
       return initialState;
   }
 };
+export default posts;
 
-
+// export default (initialState =[], action) => {
+//   switch (action.type) {
+//     case FETCH_ALL:
+//       return action.payload;
+//     default:
+//       return initialState;
+//   }
+// };
