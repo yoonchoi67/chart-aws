@@ -1,5 +1,7 @@
 *
 !backend/**
+!backend
+
 !frontend/
 !frontend/build
 !frontend/build/**
