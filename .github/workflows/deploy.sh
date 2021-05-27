@@ -8,6 +8,7 @@ git config --global user.email "choijong@grinnell.edu"
 git config --global user.name "Yoon Choi"
 mv .gitignore_cicd .gitignore
 git init .
+# git config receive.denyCurrentBranch updateInstead
 git add .
 git commit -m "Deploying"
 git remote add production ssh://$user@$AWS_HOST/~/webapp
