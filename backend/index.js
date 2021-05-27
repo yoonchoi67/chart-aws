@@ -16,7 +16,7 @@ if( PRODUCTION ) {
 
 
 
-//take a look again
+//take a look agains
 const port = process.env.PORT;
 app.use(cors());
 
