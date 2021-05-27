@@ -4,6 +4,8 @@ import cors from 'cors';
 import routes from './routes/routes.js';
  
 const app = express();
+
+//take a look again
 const PRODUCTION = process.env.NODE_ENV === 'production'
 
 if( PRODUCTION ) {
@@ -13,6 +15,8 @@ if( PRODUCTION ) {
 }
 
 
+
+//take a look again
 const port = process.env.PORT;
 app.use(cors());
 
