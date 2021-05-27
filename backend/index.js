@@ -14,7 +14,7 @@ console.log(PRODUCTION)
 if( PRODUCTION ) {
     app.use('/', express.static('/home/ubuntu/webapp/frontend/build'))
 } else {    
-    // app.use('/', express.static('./../frontend/src'))
+    // app.use('/', express.static('./../frontend/src'))s
     app.use('/', express.static('./../frontend/build'))
     // app.use("/", routes);
 }
