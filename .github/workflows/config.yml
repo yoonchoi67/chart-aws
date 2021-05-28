@@ -3,7 +3,7 @@ on:
     push:
         branches: [master]
 env:
-    AWS_HOST: 3.37.61.17
+    AWS_HOST: 54.180.26.58
 jobs:
     build:
         runs-on: ubuntu-18.04
