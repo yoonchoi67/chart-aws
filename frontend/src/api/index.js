@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const url = 'http://localhost:3001';
-const HOST = window.location.hostname + ':3001'
+// const HOST = window.location.hostname + ':3001'
 
 export const fetchPosts = () => axios.get(`${url}/getT`);
 // export const fetchPosts = () => axios.get(`${HOST}/getT`);

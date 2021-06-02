@@ -2,7 +2,7 @@
   "name": "@coreui/coreui-free-react-admin-template",
   "version": "3.2.1",
   "description": "CoreUI React Open Source Bootstrap 4 Admin Template",
-  "proxy": "http://localhost:3001",
+  "proxy": "http://localhost:3000",
   "author": {
     "name": "CoreUI",
     "url": "https://coreui.io",
@@ -52,7 +52,7 @@
     "react-scripts": "^4.0.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set PORT=3001 && react-scripts start",
     "build": "CI=false && react-scripts build",
     "test": "react-scripts test",
     "test:cov": "npm test -- --coverage --watchAll=false",
