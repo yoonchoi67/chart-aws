@@ -5,7 +5,6 @@ import * as api from '../api/index.js';
 export const getT = () => async dispatch => {
   try {
     const { data } = await api.fetchPosts();
-    console.log("THIS IS IT");
     console.log(data["TableNames"]);
     dispatch({ type: FETCH_ALL, payload: data });
   } catch (error) {

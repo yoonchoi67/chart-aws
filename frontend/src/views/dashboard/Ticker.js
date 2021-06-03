@@ -20,7 +20,7 @@ const Ticker = (e) => {
 
   return (
     <>
-      <CButton onClick={getServer}>Click This</CButton>
+      <CButton onClick={getServer}>Get data from dynamodb</CButton>
       <CButton onClick={fetchTodos}>Click This</CButton>
 
       {/* <Items></Items> */}

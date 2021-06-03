@@ -7,16 +7,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-//take a look again
-// const PRODUCTION = process.env.NODE_ENV === 'production'
-const PRODUCTION1 = true
-console.log(PRODUCTION1)
-
-if( PRODUCTION1 ) {
+//process.env.NODE_ENV is set in package.json
+if( process.env.NODE_ENV === 'production' ) {
     app.use('/', express.static('/home/ubuntu/webapp/frontend/build'))
 } else {    
-    app.use('/', express.static('./../frontend/build'))
-    // app.use("/", routes);
+    app.use("/", routes);
 }
 
 //take a look again
