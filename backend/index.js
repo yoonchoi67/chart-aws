@@ -2,10 +2,12 @@
 import express from 'express';
 import cors from 'cors';
 import routes from './routes/routes.js';
+import helmet from 'helmet';
  
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(helmet());
 
 //process.env.NODE_ENV is set in package.json
 if( process.env.NODE_ENV === 'production' ) {
