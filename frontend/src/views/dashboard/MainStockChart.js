@@ -23,10 +23,12 @@ const MainChartExample = attributes => {
 
   //get the dispatch
   const dispatch = useDispatch();
-
   const [searchValue, setSearchValue] = useState([]);
   const [yAxes, setYAxes] = useState([])
+  // this is units in the x-axis: date. It is initialized inside useEffect...
+  let labels = [];
 
+  
   //current ticker that is display on the main stock chart. Default is "SPY".
   const clicked_ticker = useSelector((state) => state.clicked_ticker);
   //data to use for charts
@@ -38,8 +40,9 @@ const MainChartExample = attributes => {
   if (processedTickerList === "all sources") { processed_ticker_list = ["all sources"] }
   else { processedTickerList.forEach(arr => { processed_ticker_list.push(arr.ticker.S) }); }
 
-  // this is units in the x-axis: date. It is initialized inside useEffect...
-  let labels = [];
+
+
+
 
   useEffect(() => {
     //get a default chart for SPY.

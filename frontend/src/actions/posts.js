@@ -1,4 +1,4 @@
-import { FETCH_DATA, FETCH_PROCESSED_TICKER_LIST, FETCH_SEARCH_VALUE, FETCH_CLICKED_TICKER } from '../constants/actionTypes';
+import { FETCH_DATA, FETCH_PROCESSED_TICKER_LIST, FETCH_YAHOO_FINANCE_DATA, FETCH_CLICKED_TICKER } from '../constants/actionTypes';
 //, CREATE, UPDATE, DELETE, LIKE }
 import * as api from '../api/index.js';
 
@@ -24,10 +24,25 @@ export const getProcessedTickerList = () => async (dispatch) => {
     console.log("error in getProcessedTickerList: ", error)
   }
 }
+
 export const setClickedTicker = (text) => async (dispatch) => {
   try {
     dispatch({ type: FETCH_CLICKED_TICKER, payload: text })
   } catch (error) {
     console.log("error in setClickedTicker: ", error)
+  }
+}
+
+export const getYahooFinanceData = (chartTicker) => async (dispatch) => {
+  try {
+    let config = {
+      params: {
+        ticker: chartTicker
+      }
+    }
+    const { data } = await api.fetchYahooFinanceData(config);
+    dispatch({ type: FETCH_YAHOO_FINANCE_DATA, payload: data });
+  } catch (error) {
+    console.log("error in getYahooFinanceData: ", error);
   }
 }

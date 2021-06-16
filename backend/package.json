@@ -21,7 +21,8 @@
     "follow-redirects": "^1.14.1",
     "helmet": "^4.6.0",
     "react-redux": "^7.2.4",
-    "url": "^0.11.0"
+    "url": "^0.11.0",
+    "yahoo-finance": "^0.3.7"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
