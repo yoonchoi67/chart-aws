@@ -15,8 +15,6 @@ import thunk from 'redux-thunk';
 
 import { createStore, applyMiddleware, compose } from 'redux';
 
-// import store from './store'/
-
 React.icons = icons
 export const store = createStore(reducers, compose(applyMiddleware(thunk)));
 

@@ -1,20 +1,11 @@
-import { FETCH_ALL } from '../constants/actionTypes';
+import { FETCH_TICKER_LIST, FETCH_DATA } from '../constants/actionTypes';
 
 const posts = (initialState = [], action) => {
   switch (action.type) {
-    case FETCH_ALL:
+    case FETCH_DATA:
       return action.payload;
     default:
       return initialState;
   }
 };
 export default posts;
-
-// export default (initialState =[], action) => {
-//   switch (action.type) {
-//     case FETCH_ALL:
-//       return action.payload;
-//     default:
-//       return initialState;
-//   }
-// };

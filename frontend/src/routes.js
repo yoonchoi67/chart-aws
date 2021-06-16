@@ -14,15 +14,12 @@ const Buttons = React.lazy(() => import('./views/buttons/buttons/Buttons'));
 const Charts = React.lazy(() => import('./views/charts/Charts'));
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
 
-const GetTicker = React.lazy(() => import('./views/dashboard/Ticker'));
-
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'));
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   
-  { path: '/trends', name: 'Trends', component: GetTicker },
   
   { path: '/base', name: 'Base', component: Cards, exact: true },
   { path: '/base/cards', name: 'Cards', component: Cards, exact: true },

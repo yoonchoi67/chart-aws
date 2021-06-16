@@ -12,15 +12,6 @@ const _nav =  [
     }
   },
   {
-    _tag: 'CSidebarNavItem',
-    name: 'Overall Trends',
-    to: '/trends',
-    icon: <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon"/>,
-    badge: {
-      color: 'info'
-    }
-  },
-  {
     _tag: 'CSidebarNavTitle',
     _children: ['Components']
   },

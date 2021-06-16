@@ -3,11 +3,19 @@ import axios from 'axios';
 const url = 'http://localhost:3000';
 // const HOST = window.location.hostname + ':3001'
 
-export const fetchPosts = () => axios.get(`${url}/trends`);
-// export const fetchPosts = () => axios.get(`${HOST}/getT`);
+export const fetchPosts = (config) => {
 
+    return axios.get(`${url}/getTrends`, config);
+    const r = axios.get(`${url}/getTrends`, config);
+    const prom = r.then((response) => response);
+    return prom
+};
 
-// export const createPost = (newPost) => axios.post(url, newPost);
-// export const likePost = (id) => axios.patch(`${url}/${id}/likePost`);
-// export const updatePost = (id, updatedPost) => axios.patch(`${url}/${id}`, updatedPost);
-// export const deletePost = (id) => axios.delete(`${url}/${id}`);
+export const fetchProcessedTickerList = () => {
+    // return axios.get(`${url}/getTickerList`)
+
+    const r = axios.get(`${url}/getProcessedTickerList`);
+    const prom = r.then((response) => response);
+    return prom
+
+}

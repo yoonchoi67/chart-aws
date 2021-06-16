@@ -4,6 +4,8 @@
 node_modules/
 # package-lock.json
 
+/frontend/src/views/dashboard/Metadata.js
+
 # testing
 /coverage
 

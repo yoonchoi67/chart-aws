@@ -1,10 +1,13 @@
 import express from 'express';
 
-import { getTicker } from '../controllers/cont.js';
+import { getTicker, getProcessedTickerList } from '../controllers/controller.js';
 
 const router = express.Router();
 
-router.get('/trends', getTicker);
+router.get('/getTrends', getTicker);
+router.get('/getSentiments', getTicker);
+router.get('/getProcessedTickerList', getProcessedTickerList);
+
 router.get('/', function (req, res) {
     res.send('hello world')
 });
