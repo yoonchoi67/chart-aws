@@ -15,17 +15,6 @@ dotenv.config({ path: path.resolve(__dirname, '../.env') });
 //router
 const router = express.Router();
 
-const params1 = {
-  TableName: "sentiments",
-  ConsistentRead: true,
-  ExpressionAttributeValues: {
-    ":ticker": {
-      S: "TSLA"
-    }
-  },
-  KeyConditionExpression: "ticker = :ticker",
-};
-
 var dynamodb = new AWS.DynamoDB({ region: process.env.REGION });
 
 export const getTicker = async (req, res) => {
@@ -50,7 +39,7 @@ export const getTicker = async (req, res) => {
       console.log(err, err.stack);
       console.log("error in controller in getTicker"); // an error occurred
     }
-    else console.log(data.Items[0])
+    // else console.log(data.Items[0])
     res.status(200).json(data.Items);
     // return data.Items;
   });
@@ -67,13 +56,9 @@ export const getProcessedTickerList = async (req, res) => {
   dynamodb.scan(params, function (err, data) {
     if (err) {
       console.log(err, err.stack);
-      console.log("error in controller in getProessedTickerList"); // an error occurred
+      console.log("error in controller in getProessedTickerList. err: ", err, ", and err.stack: ", err.stack); // an error occurred
     }
-    // else console.log("data in processed ticker list in cont.js: ", data.Items)
-    console.log("DYNAMODB SCAN: ", data.Items);
     res.status(200).json(data.Items);
-
-    // return data.Items;
   });
 
 }
@@ -90,13 +75,12 @@ export const getYahooFinanceData = async (req, res) => {
   }, function (err, quoteInfo) {
     // }, httpRequestOptions, function (err, quoteInfo) {
     if (err) {
-      console.log("error in ticker financial table: ", err)
+      console.log("error in ticker financial table: ", err);
+      res.status(200).json(err);
+    } else {
+      console.log("QUOTEINFO: ", quoteInfo);
+      res.status(200).json(quoteInfo);
     }
-    // setTickerInfo(quoteInfo)
-    // console.log("QUOTEINFO: ", [quoteInfo]);
-    // return quoteInfo;
-    res.status(200).json(quoteInfo);
-
 
   })
 

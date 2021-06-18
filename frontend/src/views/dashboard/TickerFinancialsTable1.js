@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import {
   CButton,
   CCard,
@@ -13,18 +14,17 @@ import {
 import { CChartPie } from '@coreui/react-chartjs'
 import { CaretDownFill, CaretUpFill } from "react-bootstrap-icons"
 import { getStyle } from '@coreui/utils'
-import { useDispatch, useSelector } from 'react-redux'
-import { getYahooFinanceData } from '../../actions/posts';
-import { store } from '../../index';
-import { useDataContext } from "./DataContext";
-
+import yahooFinance from "yahoo-finance"
 import { financialsToLabel, keyStatisticsToLabel, recommendationToLabel } from "./FinancialDataLabels"
+import { httpRequestOptions } from "../../reusable/CORSProxy"
+import { useDataContext } from "./DataContext"
 
 const brandGreen = "#0f802d"
 const brandSuccess = getStyle('success') || '#4dbd74'
 const brandInfo = getStyle('info') || '#20a8d8'
 const brandDanger = getStyle('danger') || '#f86c6b'
 const brandWarning = getStyle("warning") || "#ffbc12"
+// const brandPrimary = getStyle("primary") || "#0563fa"
 
 const recommendationToStyle = {
   "strongSell": brandDanger,
@@ -36,26 +36,33 @@ const recommendationToStyle = {
 
 export default function TickerFinancialsTable() {
 
-  const dispatch = useDispatch();
-  const { chartTicker } = useDataContext()
-
+  const { chartTicker, getChartTickerLabel } = useDataContext()
+  // const chartTicker = useSelector((state) => state.clicked_ticker);
+  console.log("CHART: ", chartTicker)
   const [expandTickerFinancials, setExpandTickerFinancials] = useState()
   const [tickerInfo, setTickerInfo] = useState()
+ 
 
-  // const yahooFinanc  eData = useSelector((state) => state.yahoo_finance_data);
+  useEffect(function () {
+    console.log("USEeffect triggered")
+    if (chartTicker !== "all_tickers") {
+      yahooFinance.quote({
+        symbol: chartTicker,
+        modules: ["recommendationTrend", "defaultKeyStatistics", "summaryProfile", "financialData"]
+      }, httpRequestOptions, function (err, quoteInfo) {
 
-  useEffect(() => {
-    console.log("yahoo effect triggered: ", chartTicker)
-    // setTickerInfo(yahooFinanceData);
-    // if (chartTicker !== "all_tickers") {
-      dispatch(getYahooFinanceData(chartTicker))
-      setTickerInfo(yahooFinanceData);
-    // }
-  }, [chartTicker, yahooFinanceData, tickerInfo])
-  
-  const yahooFinanceData = useSelector((state) => state.yahoo_finance_data);
-  // console.log("YAHOO DATA: ", yahooFinanceData)
-  
+        if (err) {
+          // console.log("ERROR", err)
+        }
+        else {
+          console.log("QUOTEINFO: ", quoteInfo)
+          setTickerInfo(quoteInfo)
+        }
+
+      })
+    }
+  }, [chartTicker])
+
   function getBadgeForAnalystRecommendation(item) {
     const recommendationToBadge = {
       "hold": "primary",
@@ -170,7 +177,7 @@ export default function TickerFinancialsTable() {
           >
             <CRow>
               <CCol>
-                <h5 className="d-inline-block float-left h-100 mb-0">Financials/Key Data for {chartTicker}</h5>
+                <h5 className="d-inline-block float-left h-100 mb-0">Financials/Key Data for {getChartTickerLabel()}</h5>
                 {expandTickerFinancials ? <CaretUpFill className="d-inline-block float-right h-100" /> :
                   <CaretDownFill className="d-inline-block float-right h-100" />}
               </CCol>

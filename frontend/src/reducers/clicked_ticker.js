@@ -1,6 +1,6 @@
 import { FETCH_CLICKED_TICKER } from '../constants/actionTypes';
 
-const clicked_ticker = (initialState = "SPY", action) => {
+const clicked_ticker = (initialState = "all tickers", action) => {
     switch (action.type) {
         case FETCH_CLICKED_TICKER:
             return action.payload;

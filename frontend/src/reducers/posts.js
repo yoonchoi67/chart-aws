@@ -1,4 +1,4 @@
-import { FETCH_TICKER_LIST, FETCH_DATA } from '../constants/actionTypes';
+import { FETCH_DATA } from '../constants/actionTypes';
 
 const posts = (initialState = [], action) => {
   switch (action.type) {

@@ -1,7 +1,7 @@
 export const financialsToLabel = {
     // maxAge:,
-    currentPrice: "Current Price",
     recommendationKey: "Analyst Recommendation",
+    currentPrice: "Current Price",
     financialCurrency: "Financial Currency",
     targetHighPrice: "Target High Price",
     targetLowPrice: "Target Low Price",

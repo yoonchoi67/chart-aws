@@ -19,7 +19,9 @@ export const getData = (chartTicker) => async (dispatch) => {
 export const getProcessedTickerList = () => async (dispatch) => {
   try {
     const { data } = await api.fetchProcessedTickerList();
-    dispatch({ type: FETCH_PROCESSED_TICKER_LIST, payload: data })
+    let result = [];
+    data.forEach(arr => {result.push(arr.ticker.S)});
+    dispatch({ type: FETCH_PROCESSED_TICKER_LIST, payload: result })
   } catch (error) {
     console.log("error in getProcessedTickerList: ", error)
   }
