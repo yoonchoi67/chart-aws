@@ -37,17 +37,17 @@ const recommendationToStyle = {
 const TickerFinancialsTable = () => {
 
   const dispatch = useDispatch();
-  
+
   const [expandTickerFinancials, setExpandTickerFinancials] = useState()
   const { chartTicker, tickerInfo, setTickerInfo } = useDataContext()
   const yahooFinanceData = useSelector((state) => state.yahoo_finance_data);
 
   useEffect(() => {
-      dispatch(getYahooFinanceData(chartTicker))
+    dispatch(getYahooFinanceData(chartTicker))
   }, [chartTicker])
-  
+
   setTickerInfo(yahooFinanceData);
-  
+
   function getBadgeForAnalystRecommendation(item) {
     const recommendationToBadge = {
       "hold": "primary",
@@ -169,7 +169,7 @@ const TickerFinancialsTable = () => {
             </CRow>
           </CButton>
         </CCardHeader>
-        <CCollapse show={expandTickerFinancials}>
+        <CCollapse show={!expandTickerFinancials}>
           <CCard>
             <CCardHeader>
               Financials
