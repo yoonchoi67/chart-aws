@@ -15,7 +15,6 @@ import { CaretDownFill, CaretUpFill } from "react-bootstrap-icons"
 import { getStyle } from '@coreui/utils'
 import { useDispatch, useSelector } from 'react-redux'
 import { getYahooFinanceData } from '../../actions/posts';
-import { store } from '../../index';
 import { useDataContext } from "./DataContext";
 
 import { financialsToLabel, keyStatisticsToLabel, recommendationToLabel } from "./FinancialDataLabels"
@@ -34,27 +33,20 @@ const recommendationToStyle = {
   "strongBuy": brandGreen
 }
 
-export default function TickerFinancialsTable() {
+//simple yahoo finance table with pretty UI
+const TickerFinancialsTable = () => {
 
   const dispatch = useDispatch();
-  const { chartTicker } = useDataContext()
-
+  
   const [expandTickerFinancials, setExpandTickerFinancials] = useState()
-  const [tickerInfo, setTickerInfo] = useState()
-
-  // const yahooFinanc  eData = useSelector((state) => state.yahoo_finance_data);
+  const { chartTicker, tickerInfo, setTickerInfo } = useDataContext()
+  const yahooFinanceData = useSelector((state) => state.yahoo_finance_data);
 
   useEffect(() => {
-    console.log("yahoo effect triggered: ", chartTicker)
-    // setTickerInfo(yahooFinanceData);
-    // if (chartTicker !== "all_tickers") {
       dispatch(getYahooFinanceData(chartTicker))
-      setTickerInfo(yahooFinanceData);
-    // }
-  }, [chartTicker, yahooFinanceData, tickerInfo])
+  }, [chartTicker])
   
-  const yahooFinanceData = useSelector((state) => state.yahoo_finance_data);
-  // console.log("YAHOO DATA: ", yahooFinanceData)
+  setTickerInfo(yahooFinanceData);
   
   function getBadgeForAnalystRecommendation(item) {
     const recommendationToBadge = {
@@ -209,3 +201,4 @@ export default function TickerFinancialsTable() {
     </CRow>
   )
 }
+export default TickerFinancialsTable;

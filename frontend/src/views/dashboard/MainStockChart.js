@@ -3,32 +3,31 @@ import { CChartLine } from '@coreui/react-chartjs'
 import { getStyle, hexToRgba } from '@coreui/utils'
 import { useDispatch, useSelector } from 'react-redux'
 import { getData } from '../../actions/posts';
-// import { store } from '../../index';
 import { useDataContext } from "./DataContext";
 
 const brandSuccess = getStyle('success') || '#4dbd74'
 const brandInfo = getStyle('info') || '#20a8d8'
 
+// this component gets data from the dynamodb
 const MainChartExample = attributes => {
+
+  const dispatch = useDispatch();
 
   const { chartTicker } = useDataContext()
 
-  //get the dispatch
-  const dispatch = useDispatch();
-
+  //y-axes to use for charts
   const [yAxes, setYAxes] = useState([])
 
-  // this is units in the x-axis: date. It is initialized inside useEffect...
+  //labels to be used for cchartline
   let labels = [];
-  
+
   //data to use for charts
   const data = useSelector((state) => state.posts);
-  
+
   useEffect(() => {
     dispatch(getData(chartTicker));
   }, [chartTicker])
 
-  //setting up for the initial chart, in this case, SPY.
   const defaultDatasets = (() => {
     const pos_sentiments = []
     const total_comments = []

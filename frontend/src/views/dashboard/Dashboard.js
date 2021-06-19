@@ -1,34 +1,26 @@
 import React, { useEffect } from 'react'; //, { lazy, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { getProcessedTickerList } from '../../actions/posts';
-import { store } from '../../index';
-import { useDataContext } from "./DataContext"
 
 import MainStockChart from "./MainStockChart";
 import TickerFinancialsTable from "./TickerFinancialsTable";
 // import TickerFinancialsTable1 from "./TickerFinancialsTable1";
 import FilterBoard from "./FilterBoard";
-import { getYahooFinanceData } from '../../actions/posts';
 
-
-const Dashboard = (e) => {
-
-  const { chartTicker, setProcessedTickers } = useDataContext()
+// main dashboard that will be a parent for all the other components
+const Dashboard = () => {
 
   const dispatch = useDispatch();
 
-  // console.log("current state in dashboard.js: ", store.getState());
-
   useEffect(() => {
     dispatch(getProcessedTickerList())
-    // dispatch(getYahooFinanceData(chartTicker))
-  }, [chartTicker])
+  }, [])
 
   return (
     <>
       <FilterBoard />
-      {chartTicker && <MainStockChart style={{ marginTop: '40px', marginBottom: "20px" }} />}
-      {chartTicker && <TickerFinancialsTable />}
+      {<TickerFinancialsTable />}
+      { <MainStockChart style={{ marginTop: '40px', marginBottom: "20px" }} />}
       {/* {clicked_ticker && clicked_ticker !== "all tickers" && <TickerFinancialsTable1 />} */}
       {/* {clicked_ticker && yahooFinanceData !== "all sources" && clicked_ticker !== "all tickers" && <TickerFinancialsTable />} */}
 

@@ -8,8 +8,9 @@ export function useDataContext() {
 
 export function DataContextProvider({ children }) {
 
-    const [chartTicker, setChartTicker] = useState("ALL_TICKERS")
+    const [chartTicker, setChartTicker] = useState("TSLA")
     const [processedTickers, setProcessedTickers] = useState([])
+    const [tickerInfo, setTickerInfo] = useState()
 
     // const [overallTickerData, setOverallTickerData] = useState({})
     // const [displayedPosts, setDisplayedPosts] = useState({})
@@ -18,7 +19,7 @@ export function DataContextProvider({ children }) {
     const [sourcesForTicker, setSourcesForTicker] = useState(null)
     
     
-    const [searchValue, setSearchValue] = useState([])
+    const [searchValue, setSearchValue] = useState(["TSLA"])
     
     const [flairFilter, setFlairFilter] = useState("all") //defer
     const [rawTickerData, setRawTickerData] = useState(null) //defer
@@ -42,7 +43,7 @@ export function DataContextProvider({ children }) {
         return chartTicker === "all_tickers" ? "all tickers" : chartTicker
     }
     
-    const value = {
+    const value = {tickerInfo, setTickerInfo,
         processedTickers,
         // overallTickerData,
         // overallMentionsData,

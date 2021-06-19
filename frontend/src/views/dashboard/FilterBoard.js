@@ -1,26 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getProcessedTickerList } from '../../actions/posts';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Typeahead } from "react-bootstrap-typeahead";
-// import { getSearchOptions } from "./utils";
 import { useDataContext } from "./DataContext";
 import {
   CCard, CCardBody, CRow, CCol, CFormText
 } from "@coreui/react"
 
+// just a searchbox that updates the context that will be used by other components below filterboard in the dashboard.js
 const FilterBoard = () => {
 
-  const {
-    chartTicker, searchValue, processedTickers,
-    setChartTicker, setSearchValue, setProcessedTickers
-  } = useDataContext()
+  const { chartTicker, searchValue, setChartTicker, setSearchValue } = useDataContext()
 
-  // initial: []
   const processedTickerList = useSelector((state) => state.processed_ticker_list);
 
   useEffect(() => {
-    setProcessedTickers(processedTickerList);
-  }, [chartTicker, processedTickerList])
+
+  }, [chartTicker])
 
   function handleClickedTickerChange(text) {
     setSearchValue(text)
@@ -35,12 +30,12 @@ const FilterBoard = () => {
         <CCardBody>
           <CRow>
             <CCol sm="3">
-              {processedTickers &&
+              {processedTickerList &&
                 <Typeahead
                   id="basic-typeahead-single"
                   labelKey="name"
                   onChange={handleClickedTickerChange}
-                  options={processedTickers.sort()}
+                  options={processedTickerList.sort()}
                   placeholder="Select Ticker"
                   selected={searchValue}
                   size="lg"

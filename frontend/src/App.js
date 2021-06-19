@@ -18,7 +18,6 @@ class App extends Component {
     return (
       <HashRouter>
         <DataContextProvider>
-
           <React.Suspense fallback={loading}>
             <Switch>
               <Route path="/" name="Home" render={props => <TheLayout {...props} />} />
