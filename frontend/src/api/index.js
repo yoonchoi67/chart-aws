@@ -1,6 +1,11 @@
 import axios from 'axios';
 
-const url = 'http://localhost:3000';
+export const IS_DEVELOPMENT = window.location.hostname === 'localhost'
+export const IS_PRODUCTION = !IS_DEVELOPMENT
+
+// const url = 'http://localhost:3000';
+const url = IS_PRODUCTION ? '' : 'http://localhost:3000'
+
 // const HOST = window.location.hostname + ':3001'
 
 export const fetchPosts = (config) => {
