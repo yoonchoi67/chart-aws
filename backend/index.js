@@ -1,7 +1,7 @@
 // import bodyParser from 'body-parser';
 import express from 'express';
 import cors from 'cors';
-import routes from './routes/routes.js';
+// import routes from './routes/routes.js';
 import path from 'path';
 // import routes1 from '/home/ubuntu/webapp/backend/routes/routes.js';
 // import helmet from 'helmet';
@@ -9,7 +9,7 @@ import path from 'path';
 const app = express();
 app.use(cors());
 app.use(express.json());
-
+//
 //process.env.NODE_ENV is set in package.json
 if( process.env.NODE_ENV === 'production' ) {
     let { default: routes1 } = await import('/home/ubuntu/webapp/backend/routes/routes.js');
@@ -18,8 +18,8 @@ if( process.env.NODE_ENV === 'production' ) {
     // app.use("/", routes);
 } else {
     // app.use('/', )
+    let { default: routes } = await import('./routes/routes.js');
     // app.use('/', express.static('../frontend/build'));
-    // let { default: routes } = await import('./routes/routes.js');
     app.use("/", routes);
     // console.log("OKS")
 }
