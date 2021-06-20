@@ -12,7 +12,8 @@ app.use(express.json());
 if( process.env.NODE_ENV === 'production' ) {
     app.use('/', express.static('/home/ubuntu/webapp/frontend/build'));
     app.use("/", routes);
-} else {    
+} else {
+    // app.use('/', express.static('../frontend/build'));
     app.use("/", routes);
 }
 
