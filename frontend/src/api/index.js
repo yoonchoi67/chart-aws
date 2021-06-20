@@ -4,7 +4,7 @@ export const IS_DEVELOPMENT = window.location.hostname === 'localhost'
 export const IS_PRODUCTION = !IS_DEVELOPMENT
 
 // const url = 'http://localhost:3000';
-const url = IS_PRODUCTION ? 'ec2-54-180-26-58.ap-northeast-2.compute.amazonaws.com:3000' : 'http://localhost:3000'
+const url = IS_PRODUCTION ? 'http://ec2-54-180-26-58.ap-northeast-2.compute.amazonaws.com:3000' : 'http://localhost:3000'
 
 // const HOST = window.location.hostname + ':3001'
 
