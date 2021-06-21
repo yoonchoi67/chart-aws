@@ -17,4 +17,5 @@ git push --force production master
 ssh $user@$AWS_HOST "cd ~/webapp && \
 pm2 kill
 NODE_ENV=production pm2 start /home/ubuntu/webapp/backend/index.js
+sudo service nginx restart
 exit"
