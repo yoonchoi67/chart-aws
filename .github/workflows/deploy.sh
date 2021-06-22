@@ -15,7 +15,7 @@ git remote add production ssh://$user@$AWS_HOST/~/webapp
 git push --force production master
 
 ssh $user@$AWS_HOST "cd ~/webapp && \
+sudo service nginx restart
 pm2 kill
 NODE_ENV=production pm2 start /home/ubuntu/webapp/backend/index.js
-sudo service nginx restart
 exit"

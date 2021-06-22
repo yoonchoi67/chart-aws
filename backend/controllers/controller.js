@@ -15,7 +15,7 @@ dotenv.config({ path: path.resolve(__dirname, '../.env') });
 //router
 const router = express.Router();
 
-var dynamodb = new AWS.DynamoDB({ region: process.env.REGION });
+var dynamodb = new AWS.DynamoDB({ region: 'ap-northeast-2' });
 
 export const getTicker = async (req, res) => {
 
@@ -39,9 +39,7 @@ export const getTicker = async (req, res) => {
       console.log(err, err.stack);
       console.log("error in controller in getTicker"); // an error occurred
     }
-    // else console.log(data.Items[0])
     res.status(200).json(data.Items);
-    // return data.Items;
   });
 
 };
@@ -64,10 +62,6 @@ export const getProcessedTickerList = async (req, res) => {
 }
 
 export const getYahooFinanceData = async (req, res) => {
-
-  // console.log("req.query in yahoo finance: ", req.query); //req.query in yahoo finance:  { ticker: 'TSLA' }
-  // console.log("req.query.ticker in yahoo finance: ", req.query.ticker); //req.query.ticker in yahoo finance:  TSLA
-  // console.log("req.query.ticker[0] in yahoo finance: ", req.query.ticker[0]); //req.query.ticker[0] in yahoo finance:  T
 
   yahooFinance.quote({
     symbol: req.query.ticker,
