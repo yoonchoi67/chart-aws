@@ -25,13 +25,11 @@ const TheHeader = () => {
   const sidebarShow = useSelector(state => state.sidebarShow)
 
   const toggleSidebar = () => {
-    const val = [true, 'responsive'].includes(sidebarShow) ? false : 'responsive'
-    dispatch({ type: 'set', sidebarShow: val })
+    dispatch({ type: 'set', sidebarShow: !sidebarShow })
   }
 
   const toggleSidebarMobile = () => {
-    const val = [false, 'responsive'].includes(sidebarShow) ? true : 'responsive'
-    dispatch({ type: 'set', sidebarShow: val })
+    dispatch({ type: 'set', sidebarShow: !sidebarShow })
   }
 
   return (

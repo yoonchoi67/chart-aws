@@ -9,3 +9,4 @@ const clicked_ticker = (initialState = "all tickers", action) => {
     }
 };
 export default clicked_ticker;
+    

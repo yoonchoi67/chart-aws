@@ -8,5 +8,6 @@ import yahoo_finance_data from './yahoo_finance_data';
 
 import clicked_source from './clicked_source';
 import clicked_ticker from './clicked_ticker';
+import sidebarShow from './sidebarShow';
 
-export const reducers = combineReducers({ posts, processed_ticker_list, processed_source_list, clicked_source, clicked_ticker, yahoo_finance_data });
+export const reducers = combineReducers({ posts, processed_ticker_list, processed_source_list, clicked_source, clicked_ticker, yahoo_finance_data, sidebarShow });//, core_ui });

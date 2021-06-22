@@ -72,7 +72,7 @@ export const getYahooFinanceData = async (req, res) => {
       console.log("error in ticker financial table: ", err);
       res.status(200).json(err);
     } else {
-      console.log("QUOTEINFO: ", quoteInfo);
+      // console.log("QUOTEINFO: ", quoteInfo);
       res.status(200).json(quoteInfo);
     }
 
