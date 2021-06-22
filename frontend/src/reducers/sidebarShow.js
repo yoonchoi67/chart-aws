@@ -1,4 +1,4 @@
-const sidebarShow = (state = true, { type, ...rest }) => {
+const sidebarShow = (state = false, { type, ...rest }) => {
   switch (type) {
     case 'set':
       return !state

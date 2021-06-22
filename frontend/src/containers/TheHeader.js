@@ -22,7 +22,7 @@ import routes from '../routes'
 
 const TheHeader = () => {
   const dispatch = useDispatch()
-  const sidebarShow = useSelector(state => state.sidebarShow)
+  const sidebarShow = useSelector(state => state.sidebarShow.sidebarShow)
 
   const toggleSidebar = () => {
     dispatch({ type: 'set', sidebarShow: !sidebarShow })
@@ -31,6 +31,16 @@ const TheHeader = () => {
   const toggleSidebarMobile = () => {
     dispatch({ type: 'set', sidebarShow: !sidebarShow })
   }
+
+  // const toggleSidebar = () => {
+  //   const val = [true, 'responsive'].includes(sidebarShow) ? false : 'responsive'
+  //   dispatch({type: 'set', sidebarShow: val})
+  // }
+
+  // const toggleSidebarMobile = () => {
+  //   const val = [false, 'responsive'].includes(sidebarShow) ? true : 'responsive'
+  //   dispatch({type: 'set', sidebarShow: val})
+  // }
 
   return (
     <CHeader withSubheader>
@@ -44,9 +54,6 @@ const TheHeader = () => {
         className="ml-3 d-md-down-none"
         onClick={toggleSidebar}
       />
-      <CHeaderBrand className="mx-auto d-lg-none" to="/">
-        <CIcon name="logo" height="48" alt="Logo" />
-      </CHeaderBrand>
 
       <CHeaderNav className="d-md-down-none mr-auto">
         <CHeaderNavItem className="px-3" >

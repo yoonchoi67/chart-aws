@@ -37,12 +37,12 @@ const recommendationToStyle = {
 const TickerFinancialsTable = () => {
 
   const dispatch = useDispatch();
-  const [expandTickerFinancials, setExpandTickerFinancials] = useState()
+
+  const [expandTickerFinancials, setExpandTickerFinancials] = useState(false)
   const { chartTicker, tickerInfo, setTickerInfo } = useDataContext()
   const yahooFinanceData = useSelector((state) => state.yahoo_finance_data);
 
   useEffect(() => {
-    console.log("FINA")
     dispatch(getYahooFinanceData(chartTicker))
   }, [chartTicker])
 
