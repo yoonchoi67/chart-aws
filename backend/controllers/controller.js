@@ -5,8 +5,9 @@ import * as dotenv from "dotenv";
 import { DynamoDBClient, GetItemCommand, ListTablesCommand } from "@aws-sdk/client-dynamodb";
 import AWS from 'aws-sdk';
 import yahooFinance from "yahoo-finance";
-import googleFinance from "google-finance";
-import robinhood from "robinhood";
+import unirest from "unirest";
+
+// dotenv.config();
 
 //env variables configuration
 const __filename = fileURLToPath(import.meta.url);
@@ -80,63 +81,23 @@ export const getYahooFinanceData = async (req, res) => {
   })
 
 }
-var credentials = { // obviously add this to process.env
-  username: 'ch67',
-  password: '4M67ydzkk!'
-  // username: process.env.REACT_APP_ROBINHOOD_USERNAME,
-  // password: process.env.REACT_APP_ROBINHOOD_PASSWORD,
-  // grant_type: process.env.REACT_APP_ROBINHOOD_GRANT_TYPE,
-  // client_id: process.env.REACT_APP_ROBINHOOD_CLIENT_ID,
-  // device_token: process.env.REACT_APP_ROBINHOOD_DEVICE_TOKEN
-}
 
 export const getGoogleFinanceData = async (req, res) => {
-  console.log("robinhood received");
-  
-  let Robinhood = robinhood(credentials, function() {
-    console.log("AUTH TOKEN: ", Robinhood.auth_token());
-    // if (data && data.mfa_required) {
-    //     var mfa_code = ""; //Notice this is blank. 
-    //     Robinhood.set_mfa_code(mfa_code, () => {
-    //         console.log(Robinhood.auth_token());
-    //         Robinhood.positions((error, response, body) => {
-    //             console.log(body);
-    //         })
-    //     })
-    // }
-})
-  // var Robinhood = robinhood(credentials, function(data){ // call this everytime ticker changes
-  //   Robinhood.news(chartTicker, (err, response, body) => {
-  //     if (err) {
-  //       console.log(err)
-  //     }
-  //     else {
-  //       body.results.sort(function(newsA, newsB) {
-  //         return moment(newsB.published_at).diff(moment(newsA.published_at))
-  //       })
-  //       setTickerNews(body.results)
-  //     }
-  //   })
-  // })
 
-}
-
-// export const getGoogleFinanceData = async (req, res) => {
-//   console.log(req.query.ticker)
-//   googleFinance.historical({
-//     // symbol: req.query.ticker,
-//     symbol: 'NASDAQ:AAPL',
-//   }, function (err, quoteInfo) {
-//     if (err) {
-//       console.log("error in ticker financial table: ", err);
-//       res.status(200).json(err);
-//     } else {
-//       console.log("QUOTEINFO: ", quoteInfo);
-//       res.status(200).json(quoteInfo);
-//     }
-
-//   })
-
-// }
+  var request = unirest("GET", "https://apidojo-yahoo-finance-v1.p.rapidapi.com/auto-complete");
+  request.query({
+    "q": req.query.ticker,
+    "region": "US"
+  });
+  request.headers({
+    "x-rapidapi-key": process.env.RAPID_API_KEY,
+    "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
+    "useQueryString": true
+  });
+  request.end(function (response) {
+    if (response.error) throw new Error(response.error);
+    res.status(200).json(response.body);
+  })
+};
 
 export default router;

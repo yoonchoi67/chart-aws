@@ -11,7 +11,7 @@ export function DataContextProvider({ children }) {
     const [chartTicker, setChartTicker] = useState("TSLA")
     const [processedTickers, setProcessedTickers] = useState([])
     const [tickerInfo, setTickerInfo] = useState({})
-    const [newsInfo, setNewsInfo] = useState({})
+    const [newsInfo, setNewsInfo] = useState()
 
     // const [overallTickerData, setOverallTickerData] = useState({})
     // const [displayedPosts, setDisplayedPosts] = useState({})

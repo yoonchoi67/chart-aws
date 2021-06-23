@@ -4,10 +4,9 @@ import { getProcessedTickerList } from '../../actions/posts';
 
 import MainStockChart from "./MainStockChart";
 import TickerFinancialsTable from "./TickerFinancialsTable";
-// import TickerFinancialsTable1 from "./TickerFinancialsTable1";
 import FilterBoard from "./FilterBoard";
 import GoogleNews from "./GoogleNews";
-
+import { store } from "./../../index";
 // main dashboard that will be a parent for all the other components
 const Dashboard = () => {
 
@@ -17,14 +16,13 @@ const Dashboard = () => {
     dispatch(getProcessedTickerList())
   }, [])
 
+  console.log("state: ", store.getState());
   return (
     <>
       <FilterBoard />
       {<TickerFinancialsTable />}
-      {/* {<GoogleNews/>} */}
+      {<GoogleNews/>}
       { <MainStockChart style={{ marginTop: '40px', marginBottom: "20px" }} />}
-      {/* {clicked_ticker && clicked_ticker !== "all tickers" && <TickerFinancialsTable1 />} */}
-      {/* {clicked_ticker && yahooFinanceData !== "all sources" && clicked_ticker !== "all tickers" && <TickerFinancialsTable />} */}
 
     </>
   )

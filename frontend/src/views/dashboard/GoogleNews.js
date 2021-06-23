@@ -19,25 +19,20 @@ const GoogleNews = () => {
     dispatch(getGoogleFinanceData(chartTicker))
   }, [chartTicker])
 
-  setNewsInfo(googleFinanceData);
+  setNewsInfo(googleFinanceData.news);
+
 
   function getNewsCard(newsPiece) {
     return (
-      <CListGroupItem href={newsPiece.url} key={`news-${newsPiece.uuid}`}>
-
+      <CListGroupItem href={newsPiece.link} key={`news-${newsPiece.uuid}`}>
+      
         <CRow>
           <CCol xs={12} md={6} className="flex-column align-items-center">
-            <CCardImg src={newsPiece.preview_image_url} />
-          </CCol>
-          <CCol xs={12} md={6} className="mt-2">
             <h4 className="text-dark">
-              {newsPiece.title} ({newsPiece.source})
-            </h4>
+              {newsPiece.title} ({newsPiece.publisher})
+            </h4>              
             <p className="text-dark">
-              {moment(newsPiece.published_at).local().format('MMMM Do YYYY, h:mm:ss a')}
-            </p>
-            <p>
-              {newsPiece.preview_text}
+              {moment(newsPiece.providerPublishTime).local().format('MMMM Do YYYY, h:mm:ss a')}
             </p>
           </CCol>
         </CRow>
@@ -58,39 +53,39 @@ const GoogleNews = () => {
   return ( // can add a filter just like the reddit posts list (allow you to change tickers on news list as well as maybe filter by source? like benzinga, yahoo_finance, etc.) 
     <CRow>
       <CCol className="mt-3">
-          <CCardHeader id="headingOne">
-            <CButton 
-              block 
-              color="link" 
-              className="p-0" 
-              onClick={() => setExpandTickerNews(!expandTickerNews)}
-            >
-              <CRow>
-                <CCol>
-                  <h5 className="d-inline-block float-left h-100 mb-0">News for {chartTicker}</h5>
-                  {expandTickerNews ? <CaretUpFill className="d-inline-block float-right h-100"/> :
-                  <CaretDownFill className="d-inline-block float-right h-100"/>}
-                </CCol>
-              </CRow>
-            </CButton>
-          </CCardHeader>
-          <CCollapse show={expandTickerNews}>
-            <CCard>
+        <CCardHeader id="headingOne">
+          <CButton
+            block
+            color="link"
+            className="p-0"
+            onClick={() => setExpandTickerNews(!expandTickerNews)}
+          >
+            <CRow>
+              <CCol>
+                <h5 className="d-inline-block float-left h-100 mb-0">News for {chartTicker}</h5>
+                {expandTickerNews ? <CaretUpFill className="d-inline-block float-right h-100" /> :
+                  <CaretDownFill className="d-inline-block float-right h-100" />}
+              </CCol>
+            </CRow>
+          </CButton>
+        </CCardHeader>
+        <CCollapse show={expandTickerNews}>
+          <CCard>
 
-              {/* <CCardHeader>
+            {/* <CCardHeader>
               </CCardHeader> */}
 
-              {/* <CCardBody>
-                <CListGroup>
-                  {newsInfo.map((newsPiece) => {
-                    return getNewsCard(newsPiece)
-                  })}
-                </CListGroup>
+            <CCardBody>
+              <CListGroup>
+                {newsInfo && newsInfo.map((newsPiece) => {
+                  return getNewsCard(newsPiece)
+                })}
+              </CListGroup>
 
-              </CCardBody> */}
+            </CCardBody>
 
-            </CCard>
-          </CCollapse>
+          </CCard>
+        </CCollapse>
       </CCol>
     </CRow>
   )
