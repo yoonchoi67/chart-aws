@@ -7,7 +7,6 @@ import AWS from 'aws-sdk';
 import yahooFinance from "yahoo-finance";
 import unirest from "unirest";
 
-// dotenv.config();
 
 //env variables configuration
 const __filename = fileURLToPath(import.meta.url);
@@ -90,7 +89,7 @@ export const getGoogleFinanceData = async (req, res) => {
     "region": "US"
   });
   request.headers({
-    "x-rapidapi-key": process.env.RAPID_API_KEY,
+    "x-rapidapi-key": "8925445ad2msh518cb2c43f027e5p18a775jsn8790ac7220f1",
     "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
     "useQueryString": true
   });

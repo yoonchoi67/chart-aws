@@ -16,7 +16,6 @@ const Dashboard = () => {
     dispatch(getProcessedTickerList())
   }, [])
 
-  console.log("state: ", store.getState());
   return (
     <>
       <FilterBoard />
