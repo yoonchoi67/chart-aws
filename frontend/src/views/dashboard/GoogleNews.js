@@ -18,9 +18,8 @@ const GoogleNews = () => {
   useEffect(() => {
     dispatch(getGoogleFinanceData(chartTicker))
   }, [chartTicker])
-  console.log(googleFinanceData.news)
-  setNewsInfo(googleFinanceData.news);
 
+  setNewsInfo(googleFinanceData.news);
 
   function getNewsCard(newsPiece) {
     return (
@@ -32,7 +31,7 @@ const GoogleNews = () => {
               {newsPiece.title} ({newsPiece.publisher})
             </h4>              
             <p className="text-dark">
-              {moment.unix(newsPiece.providerPublishTime).format("MM/DD/YYYY")}
+              {moment.unix(newsPiece.providerPublishTime).format('MMMM Do YYYY, h:mm:ss a')}
             </p>
           </CCol>
         </CRow>
