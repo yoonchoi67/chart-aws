@@ -11,14 +11,14 @@ const GoogleNews = () => {
 
   const dispatch = useDispatch();
 
-  const [expandTickerNews, setExpandTickerNews] = useState(false)
+  const [expandTickerNews, setExpandTickerNews] = useState(true)
   const { chartTicker, newsInfo, setNewsInfo } = useDataContext()
   const googleFinanceData = useSelector((state) => state.google_finance_data);
 
   useEffect(() => {
     dispatch(getGoogleFinanceData(chartTicker))
   }, [chartTicker])
-
+  console.log(googleFinanceData.news)
   setNewsInfo(googleFinanceData.news);
 
 
@@ -32,7 +32,7 @@ const GoogleNews = () => {
               {newsPiece.title} ({newsPiece.publisher})
             </h4>              
             <p className="text-dark">
-              {moment(newsPiece.providerPublishTime).local().format('MMMM Do YYYY, h:mm:ss a')}
+              {moment.unix(newsPiece.providerPublishTime).format("MM/DD/YYYY")}
             </p>
           </CCol>
         </CRow>
