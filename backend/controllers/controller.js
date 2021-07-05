@@ -40,7 +40,7 @@ export const getTrends = async (req, res) => {
       console.log(err, err.stack);
       console.log("error in controller in getTicker"); // an error occurred
     }
-    console.log(data.Items)
+    // console.log(data.Items)
     res.status(200).json(data.Items);
   });
 

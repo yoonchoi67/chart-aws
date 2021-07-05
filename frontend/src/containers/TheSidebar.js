@@ -16,12 +16,13 @@ import navigation from './_nav'
 
 const TheSidebar = () => {
   const dispatch = useDispatch()
-  const show = useSelector(state => state.sidebarShow)
+  const sidebarShow = useSelector(state => state.sidebarShow)
 
   return (
     <CSidebar
-      show={show}
-      onShowChange={(val) => dispatch({ type: 'set', sidebarShow: val })}
+      position="fixed"
+      show={sidebarShow}
+      onShowChange={(val) => dispatch({ type: 'set', sidebarShow: true })}
     >
       <CSidebarNav>
 

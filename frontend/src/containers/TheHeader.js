@@ -20,28 +20,21 @@ import routes from '../routes'
 
 const TheHeader = () => {
   const dispatch = useDispatch()
-  const sidebarShow = useSelector(state => state.sidebarShow.sidebarShow)
+  const sidebarShow = useSelector(state => state.sidebarShow)
 
   const toggleSidebar = () => {
-    dispatch({ type: 'set', sidebarShow: !sidebarShow })
+    const val = [true, 'responsive'].includes(sidebarShow) ? false : 'responsive'
+    dispatch({ type: 'set', payload: val })
   }
 
   const toggleSidebarMobile = () => {
-    dispatch({ type: 'set', sidebarShow: !sidebarShow })
+    const val = [false, 'responsive'].includes(sidebarShow) ? true : 'responsive'
+    dispatch({ type: 'set', payload: val })
   }
-
-  // const toggleSidebar = () => {
-  //   const val = [true, 'responsive'].includes(sidebarShow) ? false : 'responsive'
-  //   dispatch({type: 'set', sidebarShow: val})
-  // }
-
-  // const toggleSidebarMobile = () => {
-  //   const val = [false, 'responsive'].includes(sidebarShow) ? true : 'responsive'
-  //   dispatch({type: 'set', sidebarShow: val})
-  // }
 
   return (
     <CHeader withSubheader>
+
       <CToggler
         inHeader
         className="ml-md-3 d-lg-none"
@@ -49,7 +42,7 @@ const TheHeader = () => {
       />
       <CToggler
         inHeader
-        className="ml-3 d-md-down-none"
+        className="ml-3 d-md-down-none mr-lg-auto mr-xl-0"
         onClick={toggleSidebar}
       />
 

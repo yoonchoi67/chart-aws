@@ -1,7 +1,11 @@
-const sidebarShow = (state = false, { type, ...rest }) => {
-  switch (type) {
+
+const initialState = {
+  sidebarShow: true
+}
+const sidebarShow = (state = true, action) => {
+  switch (action.type) {
     case 'set':
-      return !state
+      return action.payload
     default:
       return state
   }
