@@ -2,7 +2,7 @@
 const initialState = {
   sidebarShow: true
 }
-const sidebarShow = (state = true, action) => {
+const sidebarShow = (state = false, action) => {
   switch (action.type) {
     case 'set':
       return action.payload

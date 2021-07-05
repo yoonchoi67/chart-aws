@@ -121,7 +121,7 @@ const MainChartExample = attributes => {
           >
             <CRow>
               <CCol>
-                <h5 className="d-inline-block float-left h-100 mb-0">Financials/Key Data for {chartTicker}</h5>
+                <h5 className="d-inline-block float-left h-100 mb-0">Sentiments Data for {chartTicker}</h5>
                 {expandTickerNews ? <CaretDownFill className="d-inline-block float-right h-100" /> :
                   <CaretUpFill className="d-inline-block float-right h-100" />}
               </CCol>
