@@ -33,6 +33,8 @@ const recommendationToStyle = {
   "strongBuy": brandGreen
 }
 
+const yahooFinanceData = {}
+
 //simple yahoo finance table with pretty UI
 const TickerFinancialsTable = () => {
 
@@ -41,13 +43,13 @@ const TickerFinancialsTable = () => {
   const [expandTickerFinancials, setExpandTickerFinancials] = useState(false)
   const { chartTicker, tickerInfo, setTickerInfo } = useDataContext()
   const yahooFinanceData = useSelector((state) => state.yahoo_finance_data);
-
+  
   useEffect(() => {
-    dispatch(getYahooFinanceData(chartTicker))
+    dispatch(getYahooFinanceData(chartTicker));
+    // setTickerInfo(yahooFinanceData);
   }, [chartTicker])
 
   setTickerInfo(yahooFinanceData);
-
   function getBadgeForAnalystRecommendation(item) {
     const recommendationToBadge = {
       "hold": "primary",
@@ -197,7 +199,7 @@ const TickerFinancialsTable = () => {
             </CCardBody>
           </CCard>
         </CCollapse>
-      </CCol>
+        </CCol>
     </CRow>
   )
 }

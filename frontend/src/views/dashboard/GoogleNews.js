@@ -16,7 +16,9 @@ const GoogleNews = () => {
   const googleFinanceData = useSelector((state) => state.google_finance_data);
 
   useEffect(() => {
-    dispatch(getGoogleFinanceData(chartTicker))
+    dispatch(getGoogleFinanceData(chartTicker));
+  // }, [chartTicker])
+    // setNewsInfo(googleFinanceData.news);
   }, [chartTicker])
 
   setNewsInfo(googleFinanceData.news);
@@ -62,8 +64,8 @@ const GoogleNews = () => {
             <CRow>
               <CCol>
                 <h5 className="d-inline-block float-left h-100 mb-0">News for {chartTicker}</h5>
-                {expandTickerNews ? <CaretUpFill className="d-inline-block float-right h-100" /> :
-                  <CaretDownFill className="d-inline-block float-right h-100" />}
+                {expandTickerNews ? <CaretDownFill className="d-inline-block float-right h-100" /> :
+                  <CaretUpFill className="d-inline-block float-right h-100" />}
               </CCol>
             </CRow>
           </CButton>

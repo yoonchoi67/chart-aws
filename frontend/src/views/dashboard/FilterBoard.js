@@ -15,7 +15,7 @@ const FilterBoard = () => {
 
   useEffect(() => {
 
-  }, [chartTicker])
+  }, [])
 
   function handleClickedTickerChange(text) {
     setSearchValue(text)

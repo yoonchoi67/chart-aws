@@ -18,14 +18,14 @@ const router = express.Router();
 
 var dynamodb = new AWS.DynamoDB({ region: 'ap-northeast-2' });
 
-export const getTicker = async (req, res) => {
+export const getTrends = async (req, res) => {
 
   // console.log("req.query: ", req.query); // req.query:  { ticker: 'TSLA' }
   // console.log("req.query.ticker: ", req.query.ticker); //req.query.ticker:  TSLA
   // console.log("req.query.ticker[0]: ", req.query.ticker[0]); //req.query.ticker[0]:  T
 
   const params = {
-    TableName: "sentiments",
+    TableName: "sentiments_by_hour",
     ConsistentRead: true,
     ExpressionAttributeValues: {
       ":ticker": {
@@ -40,6 +40,7 @@ export const getTicker = async (req, res) => {
       console.log(err, err.stack);
       console.log("error in controller in getTicker"); // an error occurred
     }
+    console.log(data.Items)
     res.status(200).json(data.Items);
   });
 
