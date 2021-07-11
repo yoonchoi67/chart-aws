@@ -47,8 +47,8 @@ const MainChartExample = attributes => {
 
     // putting aggregated results into the dataset
     for (const [key, value] of Object.entries(result)) {
-      pos_sentiments.push(parseInt(value['mentions'], 10))
-      total_comments.push(parseInt(value['positives'], 10))
+      pos_sentiments.push(parseInt(value['positives'], 10))
+      total_comments.push(parseInt(value['mentions'], 10))
       labels.push(key)
     }
 
