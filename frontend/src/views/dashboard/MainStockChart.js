@@ -4,7 +4,7 @@ import { getStyle, hexToRgba } from '@coreui/utils'
 import { useDispatch, useSelector } from 'react-redux'
 import { getData } from '../../actions/posts';
 import { useDataContext } from "./DataContext";
-import { CCol, CRow, CCard, CCardHeader, CCardBody, CListGroup, CButton, CCollapse, CListGroupItem, CImg, CBadge, CCardImg } from "@coreui/react"
+import { CCol, CRow, CCard, CCardHeader, CButton, CCollapse } from "@coreui/react"
 import { CaretDownFill, CaretUpFill } from "react-bootstrap-icons"
 
 const brandSuccess = getStyle('success') || '#4dbd74'
@@ -26,28 +26,31 @@ const MainChartExample = attributes => {
 
   //data to use for charts
   const data = useSelector((state) => state.posts);
-
+  // console.log(data)
   useEffect(() => {
     dispatch(getData(chartTicker));
     getYAxes();
   }, [chartTicker])
-  // }, [])
 
   const defaultDatasets = (() => {
     const pos_sentiments = []
     const total_comments = []
+    
+    // result aggregation
+    const result = data.reduce((acc, {mentions, date, positives}) => {
+      let day = date.S.substring(0, 10)
+      acc[day] = acc[day] || {mentions: 0, date, positives: 0};
+      acc[day].mentions += parseInt(mentions.N);
+      acc[day].positives += parseInt(positives.N);
+      return acc;
+    }, {})
 
-    data.forEach(arr => {
-      // pos_sentiments.push(arr.POS.N)
-      // total_comments.push(arr.total_comments.N)
-      pos_sentiments.push(parseInt(arr.positives.N, 10))
-      total_comments.push(parseInt(arr.mentions.N, 10))
-
-      // labels.push(arr.date.S.substring(5, 10))
-      // date: { S: '2021-07-04-10-43' }
-      // labels.push(arr.date.S.substring(5, 10)) // do this to get to dates
-      labels.push(arr.date.S.substring(0, 13))
-    });
+    // putting aggregated results into the dataset
+    for (const [key, value] of Object.entries(result)) {
+      pos_sentiments.push(parseInt(value['mentions'], 10))
+      total_comments.push(parseInt(value['positives'], 10))
+      labels.push(key)
+    }
 
     return [
       {

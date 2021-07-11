@@ -33,7 +33,7 @@ const recommendationToStyle = {
   "strongBuy": brandGreen
 }
 
-const yahooFinanceData = {}
+// const yahooFinanceData = {}
 
 //simple yahoo finance table with pretty UI
 const TickerFinancialsTable = () => {

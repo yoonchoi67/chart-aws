@@ -6,7 +6,7 @@ import MainStockChart from "./MainStockChart";
 import TickerFinancialsTable from "./TickerFinancialsTable";
 import FilterBoard from "./FilterBoard";
 import GoogleNews from "./GoogleNews";
-import { store } from "./../../index";
+// import { store } from "./../../index";
 // main dashboard that will be a parent for all the other components
 const Dashboard = () => {
 

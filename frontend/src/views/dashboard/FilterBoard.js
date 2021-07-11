@@ -9,7 +9,7 @@ import {
 // just a searchbox that updates the context that will be used by other components below filterboard in the dashboard.js
 const FilterBoard = () => {
 
-  const { chartTicker, searchValue, setChartTicker, setSearchValue } = useDataContext()
+  const { searchValue, setChartTicker, setSearchValue } = useDataContext()
 
   const processedTickerList = useSelector((state) => state.processed_ticker_list);
 

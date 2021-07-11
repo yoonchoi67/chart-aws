@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { CCol, CRow, CCard, CCardHeader, CCardBody, CListGroup, CButton, CCollapse, CListGroupItem, CImg, CBadge, CCardImg } from "@coreui/react"
+import { CCol, CRow, CCard, CCardHeader, CCardBody, CListGroup, CButton, CCollapse, CListGroupItem } from "@coreui/react"
 import { useDispatch, useSelector } from 'react-redux'
 import { CaretDownFill, CaretUpFill } from "react-bootstrap-icons"
 import { getGoogleFinanceData } from '../../actions/posts';
@@ -41,15 +41,15 @@ const GoogleNews = () => {
     )
   }
 
-  function getBadgesForNews(newsPiece) {
-    return (
-      <CRow>
-        <h5 className="m-1"><CBadge color="primary">
-          {newsPiece.source}
-        </CBadge></h5>
-      </CRow>
-    )
-  }
+  // function getBadgesForNews(newsPiece) {
+  //   return (
+  //     <CRow>
+  //       <h5 className="m-1"><CBadge color="primary">
+  //         {newsPiece.source}
+  //       </CBadge></h5>
+  //     </CRow>
+  //   )
+  // }
 
   return ( // can add a filter just like the reddit posts list (allow you to change tickers on news list as well as maybe filter by source? like benzinga, yahoo_finance, etc.) 
     <CRow>
