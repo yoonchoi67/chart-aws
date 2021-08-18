@@ -17,6 +17,10 @@ jobs:
               with:
                   python-version: '3.8'
                   architecture: x64
+              run: |
+                  cd cb-backend
+                  pip3 install -r requirements.txt
+                  pm2 start chartbeyond.py
             - name: Build Client
               env:
                   NODE_ENV: development
