@@ -25,6 +25,11 @@ jobs:
               run: |
                   cd backend
                   npm ci
+            - name: Set up Python 3.8
+              uses: actions/setup-python@v2
+              with:
+                  python-version: '3.8'
+                  architecture: x64
             - name: Deploy on servers
               env:
                   DEPLOYMENT_KEY_B64: ${{ secrets.DEPLOYMENT_KEY_B64 }}
