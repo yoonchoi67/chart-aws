@@ -12,6 +12,11 @@ jobs:
             - uses: actions/setup-node@v1
               with:
                   node-version: '14.15.5'
+            - name: Set up Python 3.8
+              uses: actions/setup-python@v2
+              with:
+                  python-version: '3.8'
+                  architecture: x64
             - name: Build Client
               env:
                   NODE_ENV: development

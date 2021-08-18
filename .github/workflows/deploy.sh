@@ -18,4 +18,9 @@ ssh $user@$AWS_HOST "cd ~/webapp && \
 sudo service nginx restart
 pm2 kill
 NODE_ENV=production pm2 start /home/ubuntu/webapp/backend/index.js
+cd cb-backend
+pip3 install -r requirements.txt
+pm2 start /home/ubuntu/webapp/chartbeyond.py
+
+
 exit"

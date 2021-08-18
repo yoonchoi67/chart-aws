@@ -21,6 +21,7 @@ export const getProcessedTickerList = () => async (dispatch) => {
     const { data } = await api.fetchProcessedTickerList();
     let result = [];
     data.forEach(arr => {result.push(arr.ticker.S)});
+    result = result.slice(-30)
     dispatch({ type: FETCH_PROCESSED_TICKER_LIST, payload: result })
   } catch (error) {
     console.log("error in getProcessedTickerList: ", error)
