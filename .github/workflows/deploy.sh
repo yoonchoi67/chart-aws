@@ -20,7 +20,5 @@ pm2 kill
 NODE_ENV=production pm2 start /home/ubuntu/webapp/backend/index.js
 cd cb-backend
 pip3 install -r requirements.txt
-pm2 start /home/ubuntu/webapp/chartbeyond.py
-
-
+pm2 start /home/ubuntu/webapp/cb-backend/chartbeyond.py
 exit"
