@@ -14,7 +14,7 @@ def get_tickers():
                         'ONLY', 'NO', 'WAS', 'BOTH', 'WHEN', 'HAVE', 'YOUR', 'DOWN', 'MA', 'HOW', 'ALL', 'HERE', 'ITS', 'ON', 'DOES', 'THAT', 'WILL', 'AIN', 'OR', 'OF', 'M', 'BY', 'IF', 'TO', 'OUR', 'IS', 'BEEN', 'FROM', 'ME', 'WE', 'HER', 'WHY', 'O', 'LL', 'SAME', 'HASN', 'NOR', 'HADN', 'AS', 'OFF', 'FOR', 'HIS', 'ARE', 'DIDN', 'IT', 'SO', 'T', 'AT', 'AN', 'A', 'JUST', 'VERY', 'AND',
                         'HE', 'HERS', 'NOT', 'Y', 'TOO', 'MY', 'HAS', 'WASN', 'D', 'THIS', 'YOU', 'OWN', 'THE', 'THEM', 'MOST', 'WHAT', 'NOW', 'FEW', 'CAN'}
     path = os.getcwd()
-    ticker_path = os.path.join(path, "./tickers", "final_tickers.csv")
+    ticker_path = os.path.join(path, "./../tickers", "final_tickers.csv")
     with open(ticker_path, newline='') as f:
         mylist = f.read().splitlines()
         return set(mylist) - excluded_tickers #- stops
