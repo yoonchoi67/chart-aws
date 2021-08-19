@@ -148,7 +148,7 @@ def main():
         print("difference in kb: ", difference)
         print("intersection in kb: ", intersection)
         print("tickers_batching_set in kb: ", tickers_batching_set)
-        print("tickers_set_in_db in kb: ", tickers_set_in_db)
+        # print("tickers_set_in_db in kb: ", tickers_set_in_db)
         print("===========")
         try:
             # this is necessary to prevent 'dictionary changed size during iteration' error
