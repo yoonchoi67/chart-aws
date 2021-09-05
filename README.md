@@ -1,6 +1,6 @@
 # Chartbeyond
 
-https://chartbeyond.com is no longer supported.
+https://chartbeyond.com is no longer in use.
 
 Real-time stock sentiment analysis web application.
 
