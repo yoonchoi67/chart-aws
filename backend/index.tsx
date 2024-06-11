@@ -1,9 +1,9 @@
-import express from 'express';
+import express, { Application, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import routes from './routes/routes.js';
 import path from 'path';
  
-const app = express();
+const app: Application = express();
 app.use(cors());
 app.use(express.json());
 
