@@ -8,7 +8,7 @@ import FilterBoard from "./FilterBoard";
 import GoogleNews from "./GoogleNews";
 // import { store } from "./../../index";
 // main dashboard that will be a parent for all the other components
-const Dashboard = () => {
+const Dashboard: React.FC = () => {
 
   const dispatch = useDispatch();
 
@@ -27,4 +27,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default Dashboard;
